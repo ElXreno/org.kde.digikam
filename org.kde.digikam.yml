@@ -29,6 +29,8 @@ cleanup:
   - /share/man
   - /share/doc
   - /share/eigen3/cmake
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 modules:
   - name: digikam
     buildsystem: cmake-ninja
