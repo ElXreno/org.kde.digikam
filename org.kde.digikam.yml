@@ -48,10 +48,9 @@ modules:
       - -DENABLE_QWEBENGINE=ON
       - -DENABLE_FACESENGINE_DNN=ON
     sources:
-      - type: git
-        url: https://invent.kde.org/graphics/digikam.git
-        tag: v7.0.0-beta3
-        commit: 2ed933e2f7eb1940647ad5983534645b65a9508b
+      - type: archive
+        url: https://download.kde.org/unstable/digikam/digikam-7.0.0-beta3.tar.xz
+        sha256: 97b2f768674afaaca6feb6e661d5c8fc6b88b08f4d4bbab8a6bcc94c19914893
     modules:
       - boost.yml
       - name: eigen
