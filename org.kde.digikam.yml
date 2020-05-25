@@ -25,10 +25,12 @@ rename-icon: digikam
 cleanup:
   - /include
   - /lib/pkgconfig
+  - /lib/cmake
+  - /lib/libexec
   - /share/pkgconfig
   - /share/man
   - /share/doc
-  - /share/eigen3/cmake
+  - /share/eigen3
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 modules:
@@ -149,6 +151,8 @@ modules:
           - -DCV_DISABLE_OPTIMIZATION=OFF
           - -DCV_TRACE=OFF
           - -DWITH_OPENJPEG=OFF
+        cleanup:
+          - /bin
         sources:
           - type: git
             url: https://github.com/Itseez/opencv.git
@@ -196,6 +200,8 @@ modules:
           - -DBUILD_MARBLE_APPS=OFF
           - -DBUILD_WITH_DBUS=ON
           - -DBUILD_TESTING=OFF
+        cleanup:
+          - /mkspecs
         sources:
           - type: git
             url: https://invent.kde.org/education/marble.git
@@ -259,6 +265,10 @@ modules:
           - --with-modules
           - --with-threads
           - --with-png
+        cleanup:
+          - /bin
+          - /etc
+          - /share/ImageMagick-*
         sources:
           - type: git
             url: https://github.com/ImageMagick/ImageMagick.git
