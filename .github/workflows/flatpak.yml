@@ -47,7 +47,7 @@ jobs:
         set -e
         ostree --repo=${FP_BUILD_REPO} init --mode=bare-user
         flatpak-builder --export-only --repo=${FP_BUILD_REPO} ${FP_BUILD_DIR} ${FLATPAK_ID}.yml
-        flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo --runtime ${FP_BUILD_REPO} ${FP_BUNDLE} ${FLATPAK_ID} ${FP_BRANCH}
+        flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo ${FP_BUILD_REPO} ${FP_BUNDLE} ${FLATPAK_ID} ${FP_BRANCH}
 
     - name: Upload bundle
       uses: actions/upload-artifact@v1
