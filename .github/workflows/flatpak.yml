@@ -28,8 +28,8 @@ jobs:
       run: |
         set -e
         flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak-builder --install-deps-from=flathub --install-deps-only --user /dev/null ${FLATPAK_ID}.yml
-        flatpak-builder --download-only /dev/null ${FLATPAK_ID}.yml
+        flatpak-builder --install-deps-from=flathub --install-deps-only --user /dev/null ${FLATPAK_ID}.json
+        flatpak-builder --download-only /dev/null ${FLATPAK_ID}.json
 
     - name: Prime ccache
       uses: actions/cache@v1
@@ -40,13 +40,13 @@ jobs:
     - name: Build flatpak
       run: |
         set -e
-        flatpak-builder --disable-updates --disable-download --ccache --sandbox ${FP_BUILD_DIR} ${FLATPAK_ID}.yml
+        flatpak-builder --disable-updates --disable-download --ccache --sandbox ${FP_BUILD_DIR} ${FLATPAK_ID}.json
 
     - name: Create flatpak bundle
       run: |
         set -e
         ostree --repo=${FP_BUILD_REPO} init --mode=bare-user
-        flatpak-builder --export-only --repo=${FP_BUILD_REPO} ${FP_BUILD_DIR} ${FLATPAK_ID}.yml
+        flatpak-builder --export-only --repo=${FP_BUILD_REPO} ${FP_BUILD_DIR} ${FLATPAK_ID}.json
         flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo ${FP_BUILD_REPO} ${FP_BUNDLE} ${FLATPAK_ID} ${FP_BRANCH}
 
     - name: Upload bundle
