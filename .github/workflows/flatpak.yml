@@ -5,7 +5,7 @@ on: [push]
 env:
   FLATPAK_ID: org.kde.digikam
   FP_BUNDLE: digiKam-${{ github.run_id }}.flatpak
-  FP_BRANCH: nightly
+  FP_BRANCH: stable
   FP_BUILD_NAME: digiKam-flatpak
   FP_BUILD_DIR: build-dir
   FP_BUILD_REPO: build-repo
