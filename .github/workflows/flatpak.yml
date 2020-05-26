@@ -37,6 +37,11 @@ jobs:
         path: .flatpak-builder/ccache
         key: flatpak-builder-ccache
 
+    - name: Set max size for ccache
+      run: |
+        mkdir -p .flatpak-builder/ccache
+        echo "max_size = 10.0G" > .flatpak-builder/ccache/ccache.conf
+
     - name: Build flatpak
       run: |
         set -e
